@@ -1,10 +1,10 @@
 import React from 'react';
 import Button from './Button';
 
-const Buttons = ({buttonsData,handleClick}) => {
+const Buttons = ({buttonsData,handleClickNumber,handleClickOperator}) => {
     const newButtons = buttonsData.map(  (buttonData,key) => {
         return(
-            <Button key = {key} data = {buttonData} handleClick={handleClick}/>
+            <Button key = {key} data = {buttonData} handleClick={ handleClickNumber}/>
         )
     })
     return(
