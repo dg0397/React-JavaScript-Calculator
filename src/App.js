@@ -5,7 +5,7 @@ import data from "./data";
 function App() {
   const [expresion,setExpresion] = useState(0);
   const [outputValue,setOutputValue] = useState('');
-  const [operator,setOperator] = useState('');
+  const [evaluatedExpresion,setEvaluatedExpresion] = useState('');
   const [usingOperator,setUsingOperator] = useState(false)
 
   const handleInputNumber = e => {
@@ -35,15 +35,16 @@ function App() {
     }
     
     //console.log(result);
-    if(!usingOperator){
-      setOutputValue( result)
-    }else{
-      setOutputValue(outputValue + result);
+    //if(!usingOperator){
+    //  setOutputValue( result)
+    //}else{
+      
 
-    }
+    //}
+    setOutputValue(outputValue + value);
     setExpresion(result.toString());
 
-
+    //This method help to replace operator when it's repeat
     if(operators.test(value)){
       if(regux.test(outputValue)){
         console.log("need replace")
@@ -51,6 +52,33 @@ function App() {
       }
       console.log("It is an operator")
       setExpresion(value)
+    }
+
+    //Method to eval an expression
+    if(value === "="){
+      result = eval(outputValue.replace("x","*"))
+      let fullExpression = `${outputValue}= ${result}`
+      setOutputValue(fullExpression);
+      setExpresion(result)
+      setEvaluatedExpresion(result)
+    }
+    //Method that define what occur when a expression is eval
+    if(evaluatedExpresion || evaluatedExpresion === 0){
+      if(operators.test(value)){
+        setOutputValue(expresion + value)
+      }else{
+        setExpresion(value)
+        setOutputValue(value)
+      }
+      setEvaluatedExpresion("")
+    }
+
+    //Method to clean all
+    if(value === "AC"){
+      setExpresion(0)
+      setOutputValue("")
+      setUsingOperator(false)
+      setEvaluatedExpresion("")
     }
   }
 
