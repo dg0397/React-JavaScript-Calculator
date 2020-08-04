@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import Main from "./Components/Main";
 import data from "./data";
+import "./Styles/styles.scss";
+
 
 function App() {
   const [expresion,setExpresion] = useState(0);
@@ -15,6 +17,7 @@ function App() {
     const operators = /[+-/x]/;
     let result;
 
+    //assing a value to result varialbe
     if( expresion === 0 || usingOperator){
       result = "" +  value;
       console.log("hey")
@@ -24,7 +27,7 @@ function App() {
       console.log("heyyo")
     }
 
-
+    //checking if I using operators
     if(regux.test(value)){
       console.log("yes");
       console.log(value);
@@ -34,13 +37,7 @@ function App() {
       console.log("no");
     }
     
-    //console.log(result);
-    //if(!usingOperator){
-    //  setOutputValue( result)
-    //}else{
-      
-
-    //}
+    
     setOutputValue(outputValue + value);
     setExpresion(result.toString());
 
