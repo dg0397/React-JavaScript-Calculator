@@ -10,7 +10,7 @@ function App() {
   const [evaluatedExpresion,setEvaluatedExpresion] = useState('');
   const [usingOperator,setUsingOperator] = useState(false)
 
-  const handleInputNumber = e => {
+  const handleInput = e => {
 
     const value = e.target.innerText ;
     const regux = /[/+-/x/.//]$/;
@@ -20,21 +20,21 @@ function App() {
     //assing a value to result varialbe
     if( expresion === 0 || usingOperator){
       result = "" +  value;
-      console.log("hey")
+     // console.log("hey")
     }else if(!usingOperator){
       result = expresion + value;
-      console.log(result);
-      console.log("heyyo")
+      //console.log(result);
+      //console.log("heyyo")
     }
 
     //checking if I using operators
     if(regux.test(value)){
-      console.log("yes");
-      console.log(value);
+      //console.log("yes");
+      //console.log(value);
       setUsingOperator(true);
     }else{
       setUsingOperator(false);
-      console.log("no");
+      //console.log("no");
     }
     
     
@@ -44,10 +44,10 @@ function App() {
     //This method help to replace operator when it's repeat
     if(operators.test(value)){
       if(regux.test(outputValue)){
-        console.log("need replace")
+        //console.log("need replace")
         setOutputValue(outputValue.replace(regux,value))
       }
-      console.log("It is an operator")
+      //console.log("It is an operator")
       setExpresion(value)
     }
 
@@ -77,40 +77,19 @@ function App() {
       setUsingOperator(false)
       setEvaluatedExpresion("")
     }
-  }
 
-  //const handleInputOperator = e =>{
-  //
-  //  const value = e.target.innerText ;
-  //  const regux = /[/+-/x/.//]$/;
-//
-//
-  //  if(outputValue === ""){
-  //    console.log("yesi")
-  //    setOutputValue( expresion + value);
-  //  }else{
-  //    console.log("yes");
-  //    setOutputValue( outputValue + expresion);
-  //  }
-//
-  //  if(regux.test(outputValue)){
-  //    console.log("jaja")
-  //    setOutputValue(outputValue.replace(regux,value))
-  //  }
-  //  setUsingOperator(true);
-  //  
-  //  
-  //  
-  //  //console.log(outputValue);
-  //  //console.log(regux.test(outputValue))
-  //  //console.log(outputValue.replace(regux,value))
-  //}
+    //eraser method{
+    if(value ==='⌫'){
+      let newValue = expresion.slice(0,expresion.length - 1);
+      setExpresion(newValue)
+      setOutputValue(outputValue.slice(0,outputValue.length - 1))
+    }
+  }
   return (
     <Main 
       data = {data} 
       value = {expresion} 
-      handleInputNumber = {handleInputNumber}
-      handleInputOperator = '' 
+      handleInput = {handleInput}
       outputValue = {outputValue}/> 
   );
 }

@@ -1,0 +1,21 @@
+button{
+    box-shadow: none;
+    background: none;
+    border: none;
+    color: white;
+    border-radius: 20px;
+}
+button[data-type='number']{
+    background-color:#487eb0 ;
+    box-shadow: 0 0 2.5px #487eb0;
+    &:active{
+        background-color: hsl(219, 42%, 49%);
+    }
+}
+button[data-type='operator']{
+    background-color: #fb8c31;
+    box-shadow: 0 0 2.5px #fb8c31;
+    &:active{
+        background-color: hsl(32, 90%, 59%);
+    }
+}

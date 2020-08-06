@@ -11,7 +11,7 @@ const buttons = [
     {button : 9 , id : "nine" , type : "number"},
     {button : 'AC' , id : "clear" , type : "operator"},
     {button : '%' , id : "percentage" , type : "operator"},
-    {button : '<x' , id : "eraser" , type : "operator"},
+    {button : '⌫' , id : "eraser" , type : "operator"},
     {button : '/' , id : "divide" , type : "operator"},
     {button : 'x' , id : "multiply" , type : "operator"},
     {button : '-' , id : "subtract" , type : "operator"},

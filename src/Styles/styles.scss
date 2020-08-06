@@ -1,22 +1,18 @@
 @import "./modules-scss/variables";
-@import "./modules-scss/container";
-@import "./modules-scss/header";
-@import "./modules-scss/input-block";
-@import "./modules-scss/display";
-@import "./modules-scss/controls";
-@import "./modules-scss/footer";
+@import "./modules-scss/main";
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-html{
-    font-family: $font;
     font-size:$font-size;
     @media screen and (min-width: 1024px){
         font-size: $font-size-desktop;
     }
 }
+html{
+    font-family: $font;
+}
 body{
-    background: #505097;
+    background: #2f3640;
 }
