@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Button = ({data,handleClick}) => {
-    const {button,id,type} = data
+    const {button,id,type,key} = data
     const styleGridArea = {
         gridArea : id
     }
@@ -10,7 +10,7 @@ const Button = ({data,handleClick}) => {
         handleClick(innerText)
     }
     return(
-        <button id = {id} style = {styleGridArea} onClick = {handleClickInput} data-type = {type}>{button}</button>
+        <button id = {id} style = {styleGridArea} onClick = {handleClickInput} data-type = {type} data-key={ key ? key : button }>{button}</button>
     )
 }
 export default Button;

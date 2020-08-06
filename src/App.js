@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState} from 'react';
 import Main from "./Components/Main";
 import data from "./data";
 import "./Styles/styles.scss";
@@ -9,10 +9,6 @@ function App() {
   const [outputValue,setOutputValue] = useState('');
   const [evaluatedExpresion,setEvaluatedExpresion] = useState('');
   const [usingOperator,setUsingOperator] = useState(false)
-
-  useEffect(()=>{
-    window.addEventListener("keydown",handlekey)
-  })
 
   const handleInput = innerText => {
 
@@ -85,8 +81,8 @@ function App() {
     //eraser method{
     if(value ==='⌫'){
       if(expresion === 0){
-        setExpresion("");
-        setOutputValue("");
+        setExpresion(0);
+        setOutputValue(0);
         return
       };
       let newValue = expresion !== "⌫" && expresion.slice(0,expresion.length - 1);
@@ -98,7 +94,11 @@ function App() {
   }
 
   const handlekey = (e) =>{
-    console.log(e.key)
+    console.log(e)
+    const key = document.querySelector(`button[data-key="${e.key}"]`);
+    if(!key) return;
+    const value = key.innerText;
+    handleInput(value);
   }
 
   return (
