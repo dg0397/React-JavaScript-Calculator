@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import Main from "./Components/Main";
 import data from "./data";
 import "./Styles/styles.scss";
@@ -10,9 +10,13 @@ function App() {
   const [evaluatedExpresion,setEvaluatedExpresion] = useState('');
   const [usingOperator,setUsingOperator] = useState(false)
 
-  const handleInput = e => {
+  useEffect(()=>{
+    window.addEventListener("keydown",handlekey)
+  })
 
-    const value = e.target.innerText ;
+  const handleInput = innerText => {
+
+    const value = innerText ;
     const regux = /[/+-/x/.//]$/;
     const operators = /[+-/x]/;
     let result;
@@ -80,17 +84,31 @@ function App() {
 
     //eraser method{
     if(value ==='⌫'){
-      let newValue = expresion.slice(0,expresion.length - 1);
+      if(expresion === 0){
+        setExpresion("");
+        setOutputValue("");
+        return
+      };
+      let newValue = expresion !== "⌫" && expresion.slice(0,expresion.length - 1);
+      console.log(newValue)
       setExpresion(newValue)
-      setOutputValue(outputValue.slice(0,outputValue.length - 1))
+      let newOutPut = outputValue !== "⌫" &&  outputValue.slice(0,outputValue.length - 1)
+      setOutputValue(newOutPut)
     }
   }
+
+  const handlekey = (e) =>{
+    console.log(e.key)
+  }
+
   return (
     <Main 
       data = {data} 
       value = {expresion} 
       handleInput = {handleInput}
-      outputValue = {outputValue}/> 
+      outputValue = {outputValue}
+      handlekey = {handlekey}
+      /> 
   );
 }
 

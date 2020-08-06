@@ -8,7 +8,7 @@ const Calculator = ({data,value,outputValue,handleInput}) => {
             <Display value = {value} outputValue = {outputValue} />
             <Buttons 
                 buttonsData = {data} 
-                handleClick = {handleInput} />
+                handleClick = {handleInput}/>
         </div>
     )
 }

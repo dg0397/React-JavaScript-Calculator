@@ -2,14 +2,14 @@ import React from "react";
 import Calculator from './Calculator';
 import Footer from './Footer';
 
-const Main = ({data,value,outputValue,handleInput}) => {
+const Main = ({data,value,outputValue,handleInput,handleKey,}) => {
     return(
-        <div className = "container">
+        <div id = "container" onKeyDown= {handleKey} tabIndex = "1">
             <Calculator 
                 data = {data} 
                 value = {value} 
                 outputValue = {outputValue} 
-                handleInput= {handleInput} />
+                handleInput= {handleInput}/>
             <Footer />
         </div>
     )

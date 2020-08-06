@@ -5,8 +5,12 @@ const Button = ({data,handleClick}) => {
     const styleGridArea = {
         gridArea : id
     }
+    const handleClickInput = e =>{
+        let {innerText} = e.target
+        handleClick(innerText)
+    }
     return(
-        <button id = {id} style = {styleGridArea} onClick = {handleClick} data-type = {type}>{button}</button>
+        <button id = {id} style = {styleGridArea} onClick = {handleClickInput} data-type = {type}>{button}</button>
     )
 }
 export default Button;
